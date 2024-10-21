@@ -7,3 +7,8 @@ https://www.kaggle.com/competitions/home-credit-credit-risk-model-stability
 - data/: 学習データ
 - notebook/: 
   - 01_train.ipynb: 学習用ノートブック
+
+## 実行方法
+~~~
+docker compose up --build
+~~~
