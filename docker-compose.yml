@@ -8,3 +8,10 @@ services:
         ports:
             - 8889:8889
         command: jupyter notebook --port=8889 --ip=0.0.0.0 --allow-root
+        deploy:
+            resources:
+                reservations:
+                    devices:
+                        - driver: nvidia
+                          count: 1
+                          capabilities: [gpu]

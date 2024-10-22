@@ -1,5 +1,5 @@
 # kaggleのpython環境をベースにする
-FROM gcr.io/kaggle-images/python:latest
+FROM gcr.io/kaggle-gpu-images/python:latest
 
 RUN pip install -U pip && \
 pip install fastprogress japanize-matplotlib && \
