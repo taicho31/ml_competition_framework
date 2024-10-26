@@ -1,17 +1,37 @@
-version: "3"
 services:
-    jupyter:
-        build: .
-        volumes:
-            - $PWD:/tmp/working
-        working_dir: /tmp/working
-        ports:
-            - 8889:8889
-        command: jupyter notebook --port=8889 --ip=0.0.0.0 --allow-root
-        deploy:
-            resources:
-                reservations:
-                    devices:
-                        - driver: nvidia
-                          count: 1
-                          capabilities: [gpu]
+  jupyter:
+    build:
+      context: 00_Dockerfile
+      dockerfile: Dockerfile_jupyter
+    volumes:
+        - $PWD:/tmp/working
+    working_dir: ${WORKING_DIR}
+    ports:
+      - "8080:8080"
+    environment:
+      HOME: ${WORKING_DIR}
+    command: jupyter notebook --port 8080 --ip=0.0.0.0 --notebook-dir="${WORKING_DIR}" --no-browser --allow-root --NotebookApp.token=''
+    deploy:
+        resources:
+            reservations:
+                devices:
+                    - driver: nvidia
+                      count: 1
+                      capabilities: [gpu]
+  mlflow:
+      build:
+        context: 00_Dockerfile
+        dockerfile: Dockerfile_mlflow
+      volumes:
+        - ./working/mlruns:${WORKING_DIR}/mlruns
+      working_dir: ${WORKING_DIR}
+      depends_on:
+        - jupyter
+      expose:
+        - "5000"
+      ports:
+        - "5000:5000"
+      environment:
+        HOME: ${WORKING_DIR}
+      command: mlflow server --backend-store-uri ${WORKING_DIR}/mlruns --default-artifact-root ${WORKING_DIR}/mlruns --host 0.0.0.0 --port 5000
+      restart: always
