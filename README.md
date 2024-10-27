@@ -5,6 +5,7 @@ https://www.kaggle.com/competitions/home-credit-credit-risk-model-stability
 
 ## 実行方法
 ~~~
+sudo chmod 666 /var/run/docker.sock
 docker compose up -d --build
 ~~~
 
