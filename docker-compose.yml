@@ -23,7 +23,7 @@ services:
         context: 00_Dockerfile
         dockerfile: Dockerfile_mlflow
       volumes:
-        - ./working/mlruns:${WORKING_DIR}/mlruns
+        - ./MLFlow:${WORKING_DIR}/mlruns
       working_dir: ${WORKING_DIR}
       depends_on:
         - jupyter
@@ -33,5 +33,5 @@ services:
         - "5000:5000"
       environment:
         HOME: ${WORKING_DIR}
-      command: mlflow server --backend-store-uri ${WORKING_DIR}/mlruns --default-artifact-root ${WORKING_DIR}/mlruns --host 0.0.0.0 --port 5000
+      command: mlflow server --backend-store-uri ${WORKING_DIR}/MLFlow/mlruns --default-artifact-root ${WORKING_DIR}/MLFlow/mlruns --host 0.0.0.0 --port 5000
       restart: always
