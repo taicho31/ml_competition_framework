@@ -1,1 +1,5 @@
+ml-common/__pycache__/
+unique_script/__pycache__/
+mlruns
+common_script
 data
