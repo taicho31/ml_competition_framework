@@ -1,5 +1,7 @@
-ml-common/__pycache__/
-unique_script/__pycache__/
+main/catboost_info/
+main/.ipynb_checkpoints/
+main/ml_common/__pycache__/
+main/unique_script/__pycache__/
 mlruns
-common_script
-data
+main/common_script
+main/data

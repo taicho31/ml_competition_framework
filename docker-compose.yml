@@ -1,7 +1,7 @@
 services:
   jupyter:
     build:
-      context: 00_Dockerfile
+      context: Dockerfile
       dockerfile: Dockerfile_jupyter
     volumes:
         - $PWD:/tmp/working
@@ -20,7 +20,7 @@ services:
                       capabilities: [gpu]
   mlflow:
       build:
-        context: 00_Dockerfile
+        context: Dockerfile
         dockerfile: Dockerfile_mlflow
       volumes:
         - $PWD/mlruns:${WORKING_DIR}/mlruns
