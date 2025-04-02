@@ -4,3 +4,8 @@ main/common_script/__pycache__/
 main/unique_script/__pycache__/
 mlruns
 main/data
+.boost_compute/
+.cache/
+.ipython/
+.jupyter/
+.local/
