@@ -13,13 +13,11 @@ docker compose up -d --build
 ~~~
 ├── Dockerfile
 ├── docker-compose.yml
-├── main
-│   ├── data
-│   ├── ml_common
-│   ├── unique_script
-│   ├── lightgbm.ipynb
-│   ├── catboost.ipynb
-│   └── xgboost.ipynb
+├── main/
+│   ├── data/
+│   ├── common_script/
+│   ├── unique_script/
+│   ├── modelling_notebook.ipynb
 ~~~
 
 ## アクセス
